@@ -487,4 +487,14 @@ RegisterNetEvent('rw_autoseller:forceupdae')
 AddEventHandler('rw_autoseller:forceupdae', function(stock)
 	sellersStock = stock
 end)
+--------------------------------------------------------------------------------------
+function GetLabelOfItem(item)
 
+if AutoSellerConfig.label then
+	local x = ESX.GetItemLabel(item)
+else	
+	local x = item
+end	
+
+return(x) 
+end

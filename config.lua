@@ -1,5 +1,8 @@
 AutoSellerConfig = {}
 
+--  set it to true if you have ESX.GetItemLabel(item) in your esx
+AutoSellerConfig.label = false
+
 AutoSellerConfig.Stock = {
 	{stock = 0, colour = {r = 250, g = 0, b = 0}},
 	{stock = 4, colour = {r = 235, g = 103, b = 2}},
