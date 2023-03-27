@@ -163,7 +163,7 @@ RegisterCommand('checkstock', function(source, args)
 			for i=1,#result2,1 do
 				if result2[i].count > 0 then
 					
-					local itemLabel = ESX.GetItemLabel(result2[i].name)
+					local itemLabel = GetLabelOfItem(result2[i].name)
 					
 					table.insert(elements, {
 						label = ('%s - <span style="color:green;">x%s</span> $%s'):format(itemLabel, result2[i].count,  ESX.Math.GroupDigits(result2[i].price)),
@@ -265,7 +265,7 @@ function OpenShopMenu(job)
 			local elements = {}
 			for i=1,#result2,1 do
 				if result2[i].count > 0 then
-					local itemLabel = ESX.GetItemLabel(result2[i].name) or 'Invalid Item'
+					local itemLabel = GetLabelOfItem(result2[i].name) or 'Invalid Item'
 					table.insert(elements, {
 						label = ('%s - <span style="color:green;">%s</span> (STOCK: %s)'):format(itemLabel, '$'..ESX.Math.GroupDigits(result2[i].price), result2[i].count),
 						name = result2[i].name,
@@ -294,7 +294,7 @@ function OpenShopMenu(job)
 				function(data, menu)
 					local quantity = tonumber(exports['dialog']:Create('Enter quantity to buy!', 'Enter quantity').value)
 					if quantity and quantity > 0 then
-						local title = 'Buy x'..quantity..' '..ESX.GetItemLabel(data.current.name)..' for $'..ESX.Math.GroupDigits(data.current.price)
+						local title = 'Buy x'..quantity..' '..GetLabelOfItem(data.current.name)..' for $'..ESX.Math.GroupDigits(data.current.price)
 						if exports['dialog']:Decision(title, 'Are you sure?', '', 'YES', 'NO').action == 'submit' then
 							TriggerServerEvent('rw_autoseller:buyItem', data.current.name, quantity, data.current.price, job)
 							menu.close()
